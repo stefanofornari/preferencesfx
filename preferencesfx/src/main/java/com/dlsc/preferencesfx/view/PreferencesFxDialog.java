@@ -17,8 +17,8 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Represents the dialog which is used to show the PreferencesFX window.
@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  */
 public class PreferencesFxDialog extends DialogPane {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(PreferencesFxDialog.class.getName());
+      Logger.getLogger(PreferencesFxDialog.class.getName());
 
   private PreferencesFxModel model;
   private PreferencesFxView preferencesFxView;
@@ -113,7 +113,7 @@ public class PreferencesFxDialog extends DialogPane {
   }
 
   private void addButtons() {
-    LOGGER.trace("Add dialog buttons for instant persistence: " + model.isInstantPersistent());
+    LOGGER.finest("Add dialog buttons for instant persistence: " + model.isInstantPersistent());
     getButtonTypes().clear();
     if (model.isInstantPersistent()) {
       getButtonTypes().addAll(closeWindowBtnType, cancelBtnType);
@@ -124,13 +124,13 @@ public class PreferencesFxDialog extends DialogPane {
 
   private void setupDialogClose() {
     dialog.setOnCloseRequest(e -> {
-      LOGGER.trace("Closing because of dialog close request");
+      LOGGER.finest("Closing because of dialog close request");
       ButtonType resultButton = (ButtonType) dialog.resultProperty().getValue();
       if (ButtonType.CANCEL.equals(resultButton)) {
-        LOGGER.trace("Dialog - Cancel Button was pressed");
+        LOGGER.finest("Dialog - Cancel Button was pressed");
         model.discardChanges();
       } else {
-        LOGGER.trace("Dialog - Close Button or 'x' was pressed");
+        LOGGER.finest("Dialog - Close Button or 'x' was pressed");
         if (model.isPersistWindowState()) {
           saveWindowState();
         }
@@ -173,14 +173,14 @@ public class PreferencesFxDialog extends DialogPane {
         new KeyCodeCombination(KeyCode.H, KeyCombination.SHORTCUT_DOWN, KeyCombination.SHIFT_DOWN);
     preferencesFxView.getScene().addEventHandler(KeyEvent.KEY_RELEASED, event -> {
       if (keyCombination.match(event)) {
-        LOGGER.trace("Opened History Debug View");
+        LOGGER.finest("Opened History Debug View");
         new HistoryDialog(model.getHistory());
       }
     });
   }
 
   private void setupButtons() {
-    LOGGER.trace("Setting Buttons up with instant persistence: " + model.isInstantPersistent());
+    LOGGER.finest("Setting Buttons up with instant persistence: " + model.isInstantPersistent());
     final Button closeBtn = (Button) lookupButton(closeWindowBtnType);
     final Button cancelBtn = (Button) lookupButton(cancelBtnType);
     final Button applyBtn = (Button) lookupButton(applyBtnType);
@@ -197,7 +197,7 @@ public class PreferencesFxDialog extends DialogPane {
   private void setupApplyBtn(Button applyBtn) {
     // check if we already added an event filter to the apply button, to avoid adding it twice
     if (applyBtn != applyWithEventBtn) {
-      LOGGER.trace("Setting up apply button");
+      LOGGER.finest("Setting up apply button");
       applyBtn.addEventFilter(ActionEvent.ACTION, event -> {
         event.consume();
         model.saveSettings();
@@ -205,7 +205,7 @@ public class PreferencesFxDialog extends DialogPane {
 
       applyWithEventBtn = applyBtn;
     } else {
-      LOGGER.trace("Event filter was already added previously to apply button");
+      LOGGER.finest("Event filter was already added previously to apply button");
     }
   }
 
@@ -214,10 +214,10 @@ public class PreferencesFxDialog extends DialogPane {
       cancelBtn.visibleProperty().bind(model.buttonsVisibleProperty());
       closeBtn.visibleProperty().bind(model.buttonsVisibleProperty());
     } else {
-      LOGGER.error("Visibility of dialog buttons could not be set!"
+      LOGGER.log(Level.SEVERE, "Visibility of dialog buttons could not be set!"
           + "Instant persistence is on, "
-          + "expected close (actual: {}) and cancel (actual: {}) buttons",
-          closeBtn, cancelBtn
+          + "expected close (actual: {0}) and cancel (actual: {1}) buttons",
+          new Object[]{closeBtn, cancelBtn}
       );
     }
   }

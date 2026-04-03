@@ -22,8 +22,8 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.image.Image;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Represents the main PreferencesFX class.
@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  */
 public class PreferencesFx {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(PreferencesFx.class.getName());
+      Logger.getLogger(PreferencesFx.class.getName());
 
   private PreferencesFxModel preferencesFxModel;
 

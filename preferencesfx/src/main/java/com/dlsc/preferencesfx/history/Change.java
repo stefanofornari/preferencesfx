@@ -19,8 +19,7 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
 
 /**
  * Represents a change, which is comprised of a new and an old value.
@@ -38,7 +37,7 @@ import org.slf4j.LoggerFactory;
 public class Change<P> {
 
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(Change.class.getName());
+      Logger.getLogger(Change.class.getName());
 
   protected final Setting setting;
 
@@ -141,7 +140,7 @@ public class Change<P> {
    */
   public void undo() {
     if (isListChange()) {
-      LOGGER.trace("Undoing list change: " + oldList.get().toString());
+      LOGGER.finest("Undoing list change: " + oldList.get().toString());
       setting.valueProperty().setValue(oldList.get());
     } else {
       setting.valueProperty().setValue(oldValue.get());
@@ -155,7 +154,7 @@ public class Change<P> {
    */
   public void redo() {
     if (isListChange()) {
-      LOGGER.trace("Redoing list change: " + newList.get().toString());
+      LOGGER.finest("Redoing list change: " + newList.get().toString());
       setting.valueProperty().setValue(newList.get());
     } else {
       setting.valueProperty().setValue(newValue.get());
@@ -171,7 +170,7 @@ public class Change<P> {
   }
 
   public void setNewList(ObservableList<P> newList) {
-    LOGGER.trace("Setting new List, old: " + oldList.toString() + " new: " + newList.toString());
+    LOGGER.finest("Setting new List, old: " + oldList.toString() + " new: " + newList.toString());
     this.newList.set(FXCollections.observableArrayList(newList));
   }
 

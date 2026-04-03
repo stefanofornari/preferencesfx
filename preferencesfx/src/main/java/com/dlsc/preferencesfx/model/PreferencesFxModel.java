@@ -29,8 +29,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Represents the model which holds all of the data and logic which is not limited to presenters.
@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
  */
 public class PreferencesFxModel {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(PreferencesFxModel.class.getName());
+      Logger.getLogger(PreferencesFxModel.class.getName());
 
   private ObjectProperty<Category> displayedCategory = new SimpleObjectProperty<>();
 
@@ -208,7 +208,7 @@ public class PreferencesFxModel {
     PreferencesFxUtils.categoriesToSettings(flatCategoriesLst)
         .forEach(setting -> {
           if (setting.hasValue()) {
-            LOGGER.trace("Loading: " + setting.getBreadcrumb());
+            LOGGER.finest("Loading: " + setting.getBreadcrumb());
             if (saveSettings) {
               setting.loadSettingValue(storageHandler);
             }
@@ -222,7 +222,7 @@ public class PreferencesFxModel {
   }
 
   public void setDisplayedCategory(Category displayedCategory) {
-    LOGGER.trace("Change displayed category to: " + displayedCategory);
+    LOGGER.finest("Change displayed category to: " + displayedCategory);
     this.displayedCategory.set(displayedCategory);
   }
 
@@ -364,7 +364,7 @@ public class PreferencesFxModel {
    * Saves the settings, when {@link #isSaveSettings()} returns {@code true}.
    */
   public void saveSettings() {
-    LOGGER.trace("Save");
+    LOGGER.finest("Save");
     if (isSaveSettings()) {
       if (!isInstantPersistent()) {
         applyFieldChanges();
@@ -381,7 +381,7 @@ public class PreferencesFxModel {
    * Can also be called explicity in case of using PreferencesFX as a node to undo all changes.
    */
   public void discardChanges() {
-    LOGGER.trace("Discard");
+    LOGGER.finest("Discard");
     if (!isInstantPersistent()) {
       discardFieldChanges();
     } else {

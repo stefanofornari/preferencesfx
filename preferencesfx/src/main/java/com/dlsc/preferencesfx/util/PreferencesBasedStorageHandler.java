@@ -22,8 +22,8 @@ import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Handles everything related to storing values of {@link Setting} using {@link Preferences}.
@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
 public abstract class PreferencesBasedStorageHandler implements StorageHandler {
 
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(PreferencesBasedStorageHandler.class.getName());
+      Logger.getLogger(PreferencesBasedStorageHandler.class.getName());
 
   private Preferences preferences;
 

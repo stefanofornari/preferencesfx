@@ -10,8 +10,8 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.property.*;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -29,7 +29,7 @@ import static com.dlsc.preferencesfx.util.Strings.containsIgnoreCase;
 public class SearchHandler {
 
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(SearchHandler.class.getName());
+      Logger.getLogger(SearchHandler.class.getName());
 
   private PreferencesFxModel model;
 
@@ -181,9 +181,9 @@ public class SearchHandler {
     categoryMatches = filteredCategoriesLst.size();
     settingMatches = filteredSettingsLst.size();
     groupMatches = filteredGroupsLst.size();
-    LOGGER.trace("Matched Categories: " + categoryMatches);
-    LOGGER.trace("Matched Settings: " + settingMatches);
-    LOGGER.trace("Matched Groups: " + groupMatches);
+    LOGGER.finest("Matched Categories: " + categoryMatches);
+    LOGGER.finest("Matched Settings: " + settingMatches);
+    LOGGER.finest("Matched Groups: " + groupMatches);
   }
 
   // asciidoctor Documentation - tag::compareMatches[]
@@ -229,7 +229,7 @@ public class SearchHandler {
    */
   public Category compareMatches(Category setting, Category group, Category category,
                                  int settingMatch, int groupMatch, int categoryMatch) {
-    LOGGER.trace(String.format("compareMatches: settingMatch: %s, groupMatch: %s, "
+    LOGGER.finest(String.format("compareMatches: settingMatch: %s, groupMatch: %s, "
         + "categoryMatch: %s", settingMatch, groupMatch, categoryMatch));
     if (settingMatch == 0 && groupMatch == 0 && categoryMatch == 0) { // if all values are 0
       return null;
@@ -281,7 +281,7 @@ public class SearchHandler {
   }
 
   private void setCategoryMatch(Category categoryMatch) {
-    LOGGER.trace("Set Category Match to: " + categoryMatch);
+    LOGGER.finest("Set Category Match to: " + categoryMatch);
     this.categoryMatch.set(categoryMatch);
   }
 

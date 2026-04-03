@@ -2,8 +2,8 @@ package com.dlsc.preferencesfx.view;
 
 import com.dlsc.preferencesfx.model.PreferencesFxModel;
 import javafx.stage.WindowEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Contains presenter logic of the {@link PreferencesFxView}.
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
  */
 public class PreferencesFxPresenter implements Presenter {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(PreferencesFxPresenter.class.getName());
+      Logger.getLogger(PreferencesFxPresenter.class.getName());
 
   private PreferencesFxModel model;
   private PreferencesFxView preferencesFxView;
@@ -51,11 +51,11 @@ public class PreferencesFxPresenter implements Presenter {
     // This is intentional by design to ensure that if the implementor wants to make their own
     // PreferencesFX dialog to not override settings in case they are discarded.
     preferencesFxView.sceneProperty().addListener((observable, oldScene, newScene) -> {
-      LOGGER.trace("new Scene: " + newScene);
+      LOGGER.finest("new Scene: " + newScene);
       if (newScene != null && newScene.getWindow() != null) {
-        LOGGER.trace("addEventHandler on Window close request to save settings");
+        LOGGER.finest("addEventHandler on Window close request to save settings");
         newScene.getWindow().addEventHandler(WindowEvent.WINDOW_CLOSE_REQUEST, event -> {
-          LOGGER.trace("saveSettings because of WINDOW_CLOSE_REQUEST");
+          LOGGER.finest("saveSettings because of WINDOW_CLOSE_REQUEST");
           model.saveSettings();
         });
       }

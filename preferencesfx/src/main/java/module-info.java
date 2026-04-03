@@ -10,7 +10,6 @@ module com.dlsc.preferencesfx {
     requires static com.google.gson;
     requires java.sql;
     requires org.controlsfx.controls;
-    requires org.slf4j;
 
     exports com.dlsc.preferencesfx;
     exports com.dlsc.preferencesfx.formsfx.view.renderer;

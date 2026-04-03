@@ -8,8 +8,8 @@ import com.dlsc.preferencesfx.model.Group;
 import com.dlsc.preferencesfx.model.PreferencesFxModel;
 import com.dlsc.preferencesfx.model.Setting;
 import javafx.scene.layout.StackPane;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Displays a {@link Category} as a form with all of its {@link Group} and {@link Setting}.
@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
  */
 public class CategoryView extends StackPane implements View {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(CategoryView.class.getName());
+      Logger.getLogger(CategoryView.class.getName());
 
   private PreferencesFxModel model;
   private Category categoryModel;

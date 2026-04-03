@@ -7,8 +7,8 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import org.controlsfx.control.BreadCrumbBar;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Displays the {@link BreadCrumbBar} of all {@link Category} up to a certain hierarchy level.
@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
  */
 public class BreadCrumbView extends HBox implements View {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(BreadCrumbView.class.getName());
+      Logger.getLogger(BreadCrumbView.class.getName());
   private final PreferencesFxModel model;
   final UndoRedoBox undoRedoBox;
   TreeItem<Category> breadcrumbsItm;

@@ -12,8 +12,8 @@ import org.controlsfx.glyphfont.FontAwesome;
 import org.controlsfx.glyphfont.Glyph;
 import org.controlsfx.glyphfont.GlyphFont;
 import org.controlsfx.glyphfont.GlyphFontRegistry;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Displays a {@link TreeView} of all {@link Category} including a search bar.
@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  */
 public class NavigationView extends VBox implements View {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(NavigationView.class.getName());
+      Logger.getLogger(NavigationView.class.getName());
 
   CustomTextField searchFld;
   TreeView<Category> treeView;

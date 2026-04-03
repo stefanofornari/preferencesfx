@@ -4,17 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.dlsc.preferencesfx</groupId>
-    <artifactId>preferencesfx-core</artifactId>
+    <groupId>ste.jfx</groupId>
+    <artifactId>preferencesfx</artifactId>
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.dlsc.preferencesfx</groupId>
-        <artifactId>parent</artifactId>
-        <version>11.17.0-ste</version>
+        <groupId>ste.jfx</groupId>
+        <artifactId>preferencesfxparent</artifactId>
+        <version>26.0.0</version>
     </parent>
 
-    <name>PreferencesFX</name>
+    <name>PreferencesFX Core</name>
     <description>A framework for quickly creating a UI for setting application
         preferences.
     </description>
@@ -174,8 +174,8 @@
         </dependency>
 
         <dependency>
-            <groupId>com.dlsc.formsfx</groupId>
-            <artifactId>formsfx-core</artifactId>
+            <groupId>ste.jfx</groupId>
+            <artifactId>formsfx</artifactId>
         </dependency>
 
         <dependency>
@@ -191,12 +191,6 @@
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
             <artifactId>ikonli-material-pack</artifactId>
-        </dependency>
-
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
         </dependency>
 
         <!-- Testing -->

@@ -13,8 +13,8 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Manages a list of changes, so undo / redo functionality can be used with {@link Setting}.
@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 public class History {
 
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(History.class.getName());
+      Logger.getLogger(History.class.getName());
 
   private ObservableList<Change> changes = FXCollections.observableArrayList();
   private SimpleObjectProperty<Change> currentChange = new SimpleObjectProperty<>();
@@ -49,7 +49,7 @@ public class History {
     currentChange.bind(Bindings.createObjectBinding(() -> {
       int index = position.get();
       if (index >= 0 && index < changes.size()) {
-        LOGGER.trace("Set item");
+        LOGGER.finest("Set item");
         return changes.get(index);
       }
       return null;
@@ -65,13 +65,13 @@ public class History {
   public void attachChangeListener(Setting setting) {
     ChangeListener changeEvent = (observable, oldValue, newValue) -> {
       if (isListenerActive() && oldValue != newValue) {
-        LOGGER.trace("Change detected, old: " + oldValue + " new: " + newValue);
+        LOGGER.finest("Change detected, old: " + oldValue + " new: " + newValue);
         addChange(new Change(setting, oldValue, newValue));
       }
     };
     ChangeListener listChangeEvent = (observable, oldValue, newValue) -> {
       if (isListenerActive()) {
-        LOGGER.trace("List Change detected: " + oldValue);
+        LOGGER.finest("List Change detected: " + oldValue);
         addChange(new Change(setting, (ObservableList) oldValue, (ObservableList) newValue));
       }
     };
@@ -84,7 +84,7 @@ public class History {
   }
 
   private void addChange(Change change) {
-    LOGGER.trace(
+    LOGGER.finest(
         String.format("addChange for: %s, before, size: %s, pos: %s, validPos: %s",
             change.setting, changes.size(), position.get(), validPosition.get()
         )
@@ -104,20 +104,20 @@ public class History {
     boolean elementExists = position.get() < lastIndex;
 
     if (compounded) {
-      LOGGER.trace("Compounded change");
+      LOGGER.finest("Compounded change");
       if (change.isListChange()) {
         changes.get(position.get()).setNewList(change.getNewList());
       } else {
         changes.get(position.get()).setNewValue(change.getNewValue());
       }
     } else if (redundant) {
-      LOGGER.trace("Redundant");
+      LOGGER.finest("Redundant");
       changes.set(position.get(), change);
     } else if (elementExists) {
-      LOGGER.trace("Element exists");
+      LOGGER.finest("Element exists");
       changes.set(incrementPosition(), change);
     } else {
-      LOGGER.trace("Add new");
+      LOGGER.finest("Add new");
       changes.add(change);
       incrementPosition();
     }
@@ -126,14 +126,14 @@ public class History {
     // if there are changes after the currently added item
     if (position.get() != lastIndex) {
       // invalidate all further changes in the list
-      LOGGER.trace("Invalidate rest");
+      LOGGER.finest("Invalidate rest");
       changes.remove(position.get() + 1, changes.size());
     }
 
     // the last valid position is now equal to the current position
     validPosition.setValue(position.get());
 
-    LOGGER.trace(
+    LOGGER.finest(
         String.format("addChange for: %s, before, size: %s, pos: %s, validPos: %s",
             change.setting, changes.size(), position.get(), validPosition.get()
         )
@@ -148,13 +148,13 @@ public class History {
    * @param action  the action to be performed
    */
   public void doWithoutListeners(Setting setting, Runnable action) {
-    LOGGER.trace(String.format("doWithoutListeners: setting: %s", setting));
+    LOGGER.finest(String.format("doWithoutListeners: setting: %s", setting));
     setListenerActive(false);
-    LOGGER.trace("removed listener");
+    LOGGER.finest("removed listener");
     action.run();
-    LOGGER.trace("performed action");
+    LOGGER.finest("performed action");
     setListenerActive(true);
-    LOGGER.trace("add listener back");
+    LOGGER.finest("add listener back");
   }
 
   /**
@@ -163,12 +163,12 @@ public class History {
    * @return true if successful, false if there are no changes to undo
    */
   public boolean undo() {
-    LOGGER.trace("undo, before, size: " + changes.size() + " pos: " + position.get()
+    LOGGER.finest("undo, before, size: " + changes.size() + " pos: " + position.get()
         + " validPos: " + validPosition.get());
     Change lastChange = prev();
     if (lastChange != null) {
       doWithoutListeners(lastChange.getSetting(), lastChange::undo);
-      LOGGER.trace("undo, after, size: " + changes.size() + " pos: " + position.get()
+      LOGGER.finest("undo, after, size: " + changes.size() + " pos: " + position.get()
           + " validPos: " + validPosition.get());
       return true;
     }
@@ -189,12 +189,12 @@ public class History {
    * @return true if successful, false if there are no changes to redo
    */
   public boolean redo() {
-    LOGGER.trace("redo, before, size: " + changes.size() + " pos: " + position.get()
+    LOGGER.finest("redo, before, size: " + changes.size() + " pos: " + position.get()
         + " validPos: " + validPosition.get());
     Change nextChange = next();
     if (nextChange != null) {
       doWithoutListeners(nextChange.getSetting(), nextChange::redo);
-      LOGGER.trace("redo, after, size: " + changes.size() + " pos: " + position.get()
+      LOGGER.finest("redo, after, size: " + changes.size() + " pos: " + position.get()
           + " validPos: " + validPosition.get());
       return true;
     }
@@ -237,11 +237,11 @@ public class History {
    * @param undoAll if true, will undo all changes before clearing
    */
   public void clear(boolean undoAll) {
-    LOGGER.trace("Clear called, with undoAll: " + undoAll);
+    LOGGER.finest("Clear called, with undoAll: " + undoAll);
     if (undoAll) {
       undoAll();
     }
-    LOGGER.trace("Clearing changes");
+    LOGGER.finest("Clearing changes");
     changes.clear();
     position.set(-1);
     validPosition.set(-1);

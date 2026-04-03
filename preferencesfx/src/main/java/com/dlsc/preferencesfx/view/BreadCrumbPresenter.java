@@ -5,8 +5,8 @@ import static com.dlsc.preferencesfx.util.Constants.BREADCRUMB_DELIMITER;
 import com.dlsc.preferencesfx.model.Category;
 import com.dlsc.preferencesfx.model.PreferencesFxModel;
 import org.controlsfx.control.BreadCrumbBar;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Contains presenter logic of the {@link BreadCrumbView}.
@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  */
 public class BreadCrumbPresenter implements Presenter {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(BreadCrumbPresenter.class.getName());
+      Logger.getLogger(BreadCrumbPresenter.class.getName());
   private final PreferencesFxModel model;
   private final BreadCrumbView breadCrumbView;
 

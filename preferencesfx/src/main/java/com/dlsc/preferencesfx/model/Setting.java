@@ -38,8 +38,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.StringConverter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Represents a setting, which holds the field to be displayed and the property which is bound.
@@ -49,7 +49,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Setting<E extends Element, P extends Property> {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(Setting.class.getName());
+      Logger.getLogger(Setting.class.getName());
 
   public static final String MARKED_STYLE_CLASS = "simple-control-marked";
   private String description;

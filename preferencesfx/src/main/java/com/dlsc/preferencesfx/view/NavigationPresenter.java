@@ -8,8 +8,8 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class NavigationPresenter implements Presenter {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(NavigationPresenter.class.getName());
+      Logger.getLogger(NavigationPresenter.class.getName());
 
   private PreferencesFxModel model;
   private SearchHandler searchHandler;
@@ -87,7 +87,7 @@ public class NavigationPresenter implements Presenter {
     // Update selected category upon search changes
     searchHandler.categoryMatchProperty().addListener(
         (observable, oldCategory, newCategory) -> {
-          LOGGER.trace(
+          LOGGER.finest(
               String.format("Category match changed! oldCategory: %s newCategory: %s selecting:"
                   + " %s", oldCategory, newCategory, categoryTreeItemMap.get(newCategory)));
           navigationView.treeView.getSelectionModel().select(

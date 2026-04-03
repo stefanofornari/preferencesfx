@@ -9,8 +9,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Represents a group, which is used to structure one to multiple settings in a category.
@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 public class Group {
 
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(Group.class.getName());
+      Logger.getLogger(Group.class.getName());
 
   private static final String MARKED_STYLE_CLASS = "group-marked";
   private String description;

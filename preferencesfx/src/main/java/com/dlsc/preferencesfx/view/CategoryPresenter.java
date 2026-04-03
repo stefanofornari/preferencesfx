@@ -10,8 +10,8 @@ import com.dlsc.preferencesfx.model.Setting;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  * Contains presenter logic of the {@link CategoryView}.
@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
  */
 public class CategoryPresenter implements Presenter {
   private static final Logger LOGGER =
-      LoggerFactory.getLogger(CategoryPresenter.class.getName());
+      Logger.getLogger(CategoryPresenter.class.getName());
 
   private PreferencesFxModel model;
   private Category categoryModel;
@@ -124,7 +124,7 @@ public class CategoryPresenter implements Presenter {
   }
 
   private void applyInstantPersistence(boolean instantPersistent, Form form) {
-    LOGGER.trace("Applying instant persistence: " + instantPersistent);
+    LOGGER.finest("Applying instant persistence: " + instantPersistent);
     BindingMode persistence;
     if (instantPersistent) {
       // instant persistence is on
