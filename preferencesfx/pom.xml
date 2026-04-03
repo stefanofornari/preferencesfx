@@ -4,15 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ste.jfx</groupId>
-    <artifactId>preferencesfx</artifactId>
-    <packaging>jar</packaging>
-
     <parent>
-        <groupId>ste.jfx</groupId>
+        <groupId>com.github.stefanofornari</groupId>
         <artifactId>preferencesfxparent</artifactId>
         <version>26.0.0</version>
     </parent>
+
+    <groupId>com.github.stefanofornari</groupId>
+    <artifactId>preferencesfx</artifactId>
+    <version>26.0.0</version>
+    <packaging>jar</packaging>
 
     <name>PreferencesFX Core</name>
     <description>A framework for quickly creating a UI for setting application
@@ -174,7 +175,7 @@
         </dependency>
 
         <dependency>
-            <groupId>ste.jfx</groupId>
+            <groupId>com.github.stefanofornari</groupId>
             <artifactId>formsfx</artifactId>
         </dependency>
 
@@ -206,5 +207,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 </project>
