@@ -23,8 +23,8 @@ package com.dlsc.preferencesfx.formsfx.view.renderer;
 import com.dlsc.formsfx.model.structure.Element;
 import com.dlsc.formsfx.model.structure.Group;
 import com.dlsc.formsfx.model.util.TranslationService;
+import com.dlsc.formsfx.view.util.VisibilityProperty;
 import com.dlsc.preferencesfx.util.Strings;
-import com.dlsc.preferencesfx.util.VisibilityProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 

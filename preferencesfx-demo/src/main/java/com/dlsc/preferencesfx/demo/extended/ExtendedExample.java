@@ -2,21 +2,19 @@ package com.dlsc.preferencesfx.demo.extended;
 
 import com.dlsc.formsfx.model.structure.Field;
 import com.dlsc.formsfx.model.structure.IntegerField;
-import com.dlsc.formsfx.model.structure.NodeElement;
 import com.dlsc.formsfx.model.structure.SingleSelectionField;
 import com.dlsc.formsfx.model.validators.DoubleRangeValidator;
+import com.dlsc.formsfx.view.controls.IntegerSliderControl;
+import com.dlsc.formsfx.view.controls.SimpleComboBoxControl;
+import com.dlsc.formsfx.view.util.VisibilityProperty;
 import com.dlsc.preferencesfx.PreferencesFx;
 import com.dlsc.preferencesfx.demo.AppStarter;
-import com.dlsc.preferencesfx.formsfx.view.controls.IntegerSliderControl;
-import com.dlsc.preferencesfx.formsfx.view.controls.SimpleComboBoxControl;
 import com.dlsc.preferencesfx.model.Category;
 import com.dlsc.preferencesfx.model.Group;
 import com.dlsc.preferencesfx.model.Setting;
 import java.io.File;
 import java.util.Arrays;
-import java.util.List;
 
-import com.dlsc.preferencesfx.util.VisibilityProperty;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;

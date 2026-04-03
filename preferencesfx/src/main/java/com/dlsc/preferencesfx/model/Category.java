@@ -3,9 +3,9 @@ package com.dlsc.preferencesfx.model;
 import static com.dlsc.preferencesfx.util.Constants.BREADCRUMB_DELIMITER;
 
 import com.dlsc.formsfx.model.util.TranslationService;
+import com.dlsc.formsfx.view.util.VisibilityProperty;
 import com.dlsc.preferencesfx.util.PreferencesFxUtils;
 import com.dlsc.preferencesfx.util.Strings;
-import com.dlsc.preferencesfx.util.VisibilityProperty;
 import com.dlsc.preferencesfx.view.CategoryView;
 import java.util.Arrays;
 import java.util.List;

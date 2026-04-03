@@ -1,11 +1,8 @@
 package com.dlsc.preferencesfx.model;
 
-import com.dlsc.formsfx.model.structure.DataField;
-import com.dlsc.formsfx.model.structure.Element;
-import com.dlsc.preferencesfx.formsfx.view.controls.SimpleControl;
+import com.dlsc.formsfx.view.util.VisibilityProperty;
 import com.dlsc.preferencesfx.formsfx.view.renderer.PreferencesFxGroup;
 import com.dlsc.preferencesfx.util.Constants;
-import com.dlsc.preferencesfx.util.VisibilityProperty;
 import java.util.Arrays;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;

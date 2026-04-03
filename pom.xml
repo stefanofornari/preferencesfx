@@ -6,7 +6,7 @@
 
     <groupId>com.dlsc.preferencesfx</groupId>
     <artifactId>parent</artifactId>
-    <version>11.17.0</version>
+    <version>11.17.0-ste</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -68,7 +68,7 @@
             <dependency>
                 <groupId>com.dlsc.formsfx</groupId>
                 <artifactId>formsfx-core</artifactId>
-                <version>11.6.0</version>
+                <version>11.6.0-ste</version>
             </dependency>
 
             <dependency>

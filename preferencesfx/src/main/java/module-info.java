@@ -13,7 +13,6 @@ module com.dlsc.preferencesfx {
     requires org.slf4j;
 
     exports com.dlsc.preferencesfx;
-    exports com.dlsc.preferencesfx.formsfx.view.controls;
     exports com.dlsc.preferencesfx.formsfx.view.renderer;
     exports com.dlsc.preferencesfx.history;
     exports com.dlsc.preferencesfx.history.view;
