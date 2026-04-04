@@ -39,7 +39,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.StringConverter;
 import java.util.logging.Logger;
-import java.util.logging.Level;
 
 /**
  * Represents a setting, which holds the field to be displayed and the property which is bound.
@@ -111,7 +110,12 @@ public class Setting<E extends Element, P extends Property> {
         description,
         Field.ofIntegerType(property)
             .label(description)
-            .render(() -> SimpleIntegerControl.of(visibilityProperty)),
+            .render(() -> {
+                final SimpleIntegerControl c = new SimpleIntegerControl();
+                c.visibilityProperty(visibilityProperty);
+
+                return c;
+            }),
         property);
   }
 
@@ -139,7 +143,11 @@ public class Setting<E extends Element, P extends Property> {
         description,
         Field.ofDoubleType(property)
             .label(description)
-            .render(() -> SimpleDoubleControl.of(visibilityProperty)),
+            .render(() -> {
+                final SimpleDoubleControl c = new SimpleDoubleControl();
+                c.visibilityProperty(visibilityProperty);
+                return c;
+                }),
         property);
   }
 
@@ -233,7 +241,11 @@ public class Setting<E extends Element, P extends Property> {
         description,
         Field.ofStringType(property)
             .label(description)
-            .render(() -> SimpleTextControl.of(visibilityProperty)),
+            .render(() -> {
+                final SimpleTextControl c = new SimpleTextControl();
+                c.visibilityProperty(visibilityProperty);
+                return c;
+            }),
         property);
   }
 
@@ -271,7 +283,11 @@ public class Setting<E extends Element, P extends Property> {
         description,
         Field.ofSingleSelectionType(items, selection)
             .label(description)
-            .render(() -> SimpleComboBoxControl.of(visibilityProperty)),
+            .render(() -> {
+                final SimpleComboBoxControl c = new SimpleComboBoxControl();
+                c.visibilityProperty(visibilityProperty);
+                return c;
+            }),
         selection);
   }
 
@@ -309,7 +325,11 @@ public class Setting<E extends Element, P extends Property> {
         description,
         Field.ofSingleSelectionType(new SimpleListProperty<>(items), selection)
             .label(description)
-            .render(() -> SimpleComboBoxControl.of(visibilityProperty)),
+            .render(() -> {
+                final SimpleComboBoxControl c = new SimpleComboBoxControl();
+                c.visibilityProperty(visibilityProperty);
+                return c;
+            }),
         selection);
   }
 
@@ -349,7 +369,11 @@ public class Setting<E extends Element, P extends Property> {
         description,
         Field.ofMultiSelectionType(items, selections)
             .label(description)
-            .render(() -> SimpleListViewControl.of(visibilityProperty)),
+            .render(() -> {
+                final SimpleListViewControl c = new SimpleListViewControl();
+                c.visibilityProperty(visibilityProperty);
+                return c;
+            }),
         selections);
   }
 
@@ -389,7 +413,12 @@ public class Setting<E extends Element, P extends Property> {
         description,
         Field.ofMultiSelectionType(new SimpleListProperty<>(items), selections)
             .label(description)
-            .render(() -> SimpleListViewControl.of(visibilityProperty)),
+            .render(() -> {
+                final SimpleListViewControl c = new SimpleListViewControl();
+                c.visibilityProperty(visibilityProperty);
+
+                return c;
+            }),
         selections);
   }
 
@@ -607,7 +636,7 @@ public class Setting<E extends Element, P extends Property> {
     // ensure it's not marked yet - so a control doesn't contain the same styleClass multiple times
     if (!marked) {
       SimpleControl renderer = (SimpleControl) ((Field) getElement()).getRenderer();
-      Node markNode = renderer.getFieldLabel();
+      Node markNode = renderer.fieldLabel();
       markNode.getStyleClass().add(MARKED_STYLE_CLASS);
       markNode.setOnMouseExited(unmarker);
       marked = !marked;
@@ -628,7 +657,7 @@ public class Setting<E extends Element, P extends Property> {
     // check if it's marked before removing the style class
     if (marked) {
       SimpleControl renderer = (SimpleControl) ((Field) getElement()).getRenderer();
-      Node markNode = renderer.getFieldLabel();
+      Node markNode = renderer.fieldLabel();
       markNode.getStyleClass().remove(MARKED_STYLE_CLASS);
       markNode.removeEventHandler(MouseEvent.MOUSE_EXITED, unmarker);
       marked = !marked;
@@ -783,12 +812,12 @@ public class Setting<E extends Element, P extends Property> {
       SimpleControl renderer = (SimpleControl) ((Field) getElement()).getRenderer();
 
       if (additionalVisibilityCondition) {
-        VisibilityProperty existingVP = renderer.getVisibilityProperty();
+        VisibilityProperty existingVP = renderer.visibilityProperty();
         if (existingVP != null) {
           visibilityProperty = VisibilityProperty.of(existingVP.get().and(visibilityProperty.get()));
         }
       }
-      renderer.setVisibilityProperty(visibilityProperty);
+      renderer.visibilityProperty(visibilityProperty);
     }
     if (element instanceof NodeElement) {
       ((NodeElement) element).getNode().visibleProperty().bind(visibilityProperty.get());

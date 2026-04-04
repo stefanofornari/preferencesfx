@@ -96,13 +96,13 @@ public class PreferencesFxGroupRenderer {
       if (element instanceof Field) {
         SimpleControl c = (SimpleControl) ((Field) element).getRenderer();
         c.setField((Field) element);
-        grid.add(c.getFieldLabel(), 0, i + rowAmount, 1, 1);
-        grid.add(c.getNode(), 1, i + rowAmount, 1, 1);
+        grid.add(c.fieldLabel(), 0, i + rowAmount, 1, 1);
+        grid.add(c.node(), 1, i + rowAmount, 1, 1);
 
         // Styling
-        GridPane.setHgrow(c.getNode(), Priority.SOMETIMES);
-        GridPane.setValignment(c.getNode(), VPos.CENTER);
-        GridPane.setValignment(c.getFieldLabel(), VPos.CENTER);
+        GridPane.setHgrow(c.node(), Priority.SOMETIMES);
+        GridPane.setValignment(c.node(), VPos.CENTER);
+        GridPane.setValignment(c.fieldLabel(), VPos.CENTER);
 
         Insets margin = new Insets(SPACING * 2, 0, 0, 0);
         if (i == elements.size() - 1) {
@@ -114,11 +114,11 @@ public class PreferencesFxGroupRenderer {
           margin = new Insets(SPACING * 6, 0, 0, 0);
         }
 
-        GridPane.setMargin(c.getNode(), margin);
-        GridPane.setMargin(c.getFieldLabel(), margin);
+        GridPane.setMargin(c.node(), margin);
+        GridPane.setMargin(c.fieldLabel(), margin);
 
-        c.getFieldLabel().getStyleClass().add(styleClass.toString() + "-label");
-        c.getNode().getStyleClass().add(styleClass.toString() + "-node");
+        c.fieldLabel().getStyleClass().add(styleClass.toString() + "-label");
+        c.node().getStyleClass().add(styleClass.toString() + "-node");
       }
       if (element instanceof NodeElement) {
         NodeElement nodeElement = (NodeElement) element;
