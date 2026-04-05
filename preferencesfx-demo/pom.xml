@@ -5,12 +5,12 @@
     <parent>
         <groupId>com.github.stefanofornari</groupId>
         <artifactId>preferencesfxparent</artifactId>
-        <version>26.0.1-SNAPSHOT</version>
+        <version>26.0.1</version>
     </parent>
 
     <groupId>com.github.stefanofornari</groupId>
     <artifactId>preferencesfx-demo</artifactId>
-    <version>26.0.1-SNAPSHOT</version>
+    <version>26.0.1</version>
     <name>PreferencesFX Demo</name>
     <description>Demo Application to show PreferencesFX capabilities</description>
 
@@ -66,7 +66,7 @@
         <dependency>
             <groupId>com.github.stefanofornari</groupId>
             <artifactId>preferencesfx</artifactId>
-            <version>26.0.1-SNAPSHOT</version>
+            <version>26.0.1</version>
         </dependency>
     </dependencies>
 
