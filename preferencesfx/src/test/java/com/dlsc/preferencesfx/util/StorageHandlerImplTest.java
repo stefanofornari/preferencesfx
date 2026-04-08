@@ -1,9 +1,10 @@
 package com.dlsc.preferencesfx.util;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javafx.collections.ObservableList;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
@@ -13,7 +14,6 @@ import static java.util.Collections.emptyList;
 import static javafx.collections.FXCollections.observableList;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Test class for {@link StorageHandlerImpl}.
@@ -21,27 +21,27 @@ import static org.junit.Assert.assertTrue;
  * @author François Martin
  * @author Marco Sanfratello
  */
-public class StorageHandlerImplTest {
+class StorageHandlerImplTest {
 
   private StorageHandler storageHandler;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     storageHandler = new StorageHandlerImpl(StorageHandlerImplTest.class);
   }
 
-  @After
-  public void tearDown() {
+  @AfterEach
+  void tearDown() {
     storageHandler.clearPreferences();
   }
 
   @Test
-  public void testClearPreferences() {
+  void testClearPreferences() {
     assertTrue(storageHandler.clearPreferences());
   }
 
   @Test
-  public void saveAndLoadSelectedCategory() {
+  void saveAndLoadSelectedCategory() {
     final String initialCategory = storageHandler.loadSelectedCategory();
     assertThat(initialCategory, is(nullValue()));
 
@@ -51,7 +51,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadDividerPosition() {
+  void saveAndLoadDividerPosition() {
     final double initialDividerPosition = storageHandler.loadDividerPosition();
     assertThat(initialDividerPosition, is(DEFAULT_DIVIDER_POSITION));
 
@@ -61,7 +61,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadWindowWidth() {
+  void saveAndLoadWindowWidth() {
     final double initialWindowWidth = storageHandler.loadWindowWidth();
     assertThat(initialWindowWidth, is((double) DEFAULT_PREFERENCES_WIDTH));
 
@@ -71,7 +71,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadWindowHeight() {
+  void saveAndLoadWindowHeight() {
     final double initialWindowHeight = storageHandler.loadWindowHeight();
     assertThat(initialWindowHeight, is((double) DEFAULT_PREFERENCES_HEIGHT));
 
@@ -81,7 +81,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadWindowPosX() {
+  void saveAndLoadWindowPosX() {
     final double initialWindowPosX = storageHandler.loadWindowPosX();
     assertThat(initialWindowPosX, is((double) DEFAULT_PREFERENCES_POS_X));
 
@@ -91,7 +91,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadWindowPosY() {
+  void saveAndLoadWindowPosY() {
     final double initialWindowPosY = storageHandler.loadWindowPosY();
     assertThat(initialWindowPosY, is((double) DEFAULT_PREFERENCES_POS_Y));
 
@@ -101,7 +101,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void loadDefaultObject() {
+  void loadDefaultObject() {
     final Object defaultValue = storageHandler.loadObject("foo", null);
     assertThat(defaultValue, is(nullValue()));
 
@@ -123,7 +123,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadObject() {
+  void saveAndLoadObject() {
     storageHandler.saveObject("foo", "baz");
     final Object loadedString = storageHandler.loadObject("foo", "bar");
     assertThat(loadedString, is("baz"));
@@ -146,7 +146,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadObjectWithNullAsDefault() {
+  void saveAndLoadObjectWithNullAsDefault() {
     storageHandler.saveObject("foo", "baz");
     final Object loadedString = storageHandler.loadObject("foo", null);
     assertThat(loadedString, is("baz"));
@@ -164,7 +164,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadObjectWithType() {
+  void saveAndLoadObjectWithType() {
     storageHandler.saveObject("foo", "baz");
     final Object loadedString = storageHandler.loadObject("foo", String.class, "bar");
     assertThat(loadedString, is("baz"));
@@ -187,7 +187,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadObjectWithTypeAndNullAsDefault() {
+  void saveAndLoadObjectWithTypeAndNullAsDefault() {
     storageHandler.saveObject("foo", "baz");
     final Object loadedString = storageHandler.loadObject("foo", String.class, null);
     assertThat(loadedString, is("baz"));
@@ -210,7 +210,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void loadObservableList() {
+  void loadObservableList() {
     final ObservableList emptyList = storageHandler.loadObservableList("foo", observableList(emptyList()));
     assertThat(emptyList, is(observableList(emptyList())));
 
@@ -228,7 +228,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadObservableList() {
+  void saveAndLoadObservableList() {
     storageHandler.saveObject("foo", asList("a", "b", "c"));
     final ObservableList stringList = storageHandler.loadObservableList("foo", observableList(asList("x")));
     assertThat(stringList, is(observableList(asList("a", "b", "c"))));
@@ -243,7 +243,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadObservableListWithEmptyDefault() {
+  void saveAndLoadObservableListWithEmptyDefault() {
     storageHandler.saveObject("foo", asList("a", "b", "c"));
     final ObservableList stringList = storageHandler.loadObservableList("foo", observableList(emptyList()));
     assertThat(stringList, is(observableList(asList("a", "b", "c"))));
@@ -258,7 +258,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadObservableListWithType() {
+  void saveAndLoadObservableListWithType() {
     storageHandler.saveObject("foo", asList("a", "b", "c"));
     final ObservableList stringList = storageHandler.loadObservableList("foo", String.class, observableList(asList("x")));
     assertThat(stringList, is(observableList(asList("a", "b", "c"))));
@@ -273,7 +273,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void saveAndLoadObservableListWithTypeAndEmptyDefault() {
+  void saveAndLoadObservableListWithTypeAndEmptyDefault() {
     storageHandler.saveObject("foo", asList("a", "b", "c"));
     final ObservableList stringList = storageHandler.loadObservableList("foo", String.class, observableList(emptyList()));
     assertThat(stringList, is(observableList(asList("a", "b", "c"))));
@@ -288,7 +288,7 @@ public class StorageHandlerImplTest {
   }
 
   @Test
-  public void shaHashing() {
+  void shaHashing() {
     StorageHandlerImpl storageHandler = new StorageHandlerImpl(StorageHandlerImplTest.class);
     final String result = storageHandler.hash("test");
     assertThat(result, is("9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"));

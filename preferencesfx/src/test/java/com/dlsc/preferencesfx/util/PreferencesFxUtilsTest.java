@@ -1,8 +1,8 @@
 package com.dlsc.preferencesfx.util;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for {@link PreferencesFxUtils}.
@@ -10,45 +10,45 @@ import org.junit.Test;
  * @author François Martin
  * @author Marco Sanfratello
  */
-public class PreferencesFxUtilsTest {
+class PreferencesFxUtilsTest {
 
 
-  @Ignore
+  @Disabled
   @Test
   public void categoriesToSettings() throws Exception {
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void mapSettingsToCategories() throws Exception {
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void mapGroupsToCategories() throws Exception {
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void filterCategoriesByDescription() throws Exception {
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void filterSettingsByDescription() throws Exception {
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void groupsToSettings() throws Exception {
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void filterGroupsByDescription() throws Exception {
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void categoriesToGroups() throws Exception {
   }
@@ -58,47 +58,47 @@ public class PreferencesFxUtilsTest {
 
   }
 
-  @Before
-  public void setUp() throws Exception {
+  @BeforeEach
+  void setUp() throws Exception {
   }
 
   @Test
-  public void categoriesToSettings1() {
+  void categoriesToSettings1() {
   }
 
   @Test
-  public void mapSettingsToCategories1() {
+  void mapSettingsToCategories1() {
   }
 
   @Test
-  public void mapGroupsToCategories1() {
+  void mapGroupsToCategories1() {
   }
 
   @Test
-  public void filterCategoriesByDescription1() {
+  void filterCategoriesByDescription1() {
   }
 
   @Test
-  public void filterSettingsByDescription1() {
+  void filterSettingsByDescription1() {
   }
 
   @Test
-  public void groupsToSettings1() {
+  void groupsToSettings1() {
   }
 
   @Test
-  public void filterGroupsByDescription1() {
+  void filterGroupsByDescription1() {
   }
 
   @Test
-  public void categoriesToGroups1() {
+  void categoriesToGroups1() {
   }
 
   @Test
-  public void getRowCount() {
+  void getRowCount() {
   }
 
   @Test
-  public void flattenCategories() {
+  void flattenCategories() {
   }
 }

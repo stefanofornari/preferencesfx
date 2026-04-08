@@ -1,7 +1,7 @@
 package com.dlsc.preferencesfx.model;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for {@link Setting}.
@@ -9,77 +9,77 @@ import org.junit.Test;
  * @author François Martin
  * @author Marco Sanfratello
  */
-public class SettingTest {
+class SettingTest {
 
-  @Before
-  public void setUp() throws Exception {
+  @BeforeEach
+  void setUp() throws Exception {
   }
 
   @Test
-  public void of() {
+  void of() {
   }
 
   @Test
-  public void of1() {
+  void of1() {
   }
 
   @Test
-  public void of2() {
+  void of2() {
   }
 
   @Test
-  public void of3() {
+  void of3() {
   }
 
   @Test
-  public void of4() {
+  void of4() {
   }
 
   @Test
-  public void of5() {
+  void of5() {
   }
 
   @Test
-  public void of6() {
+  void of6() {
   }
 
   @Test
-  public void of7() {
+  void of7() {
   }
 
   @Test
-  public void of8() {
+  void of8() {
   }
 
   @Test
-  public void of9() {
+  void of9() {
   }
 
   @Test
-  public void of10() {
+  void of10() {
   }
 
   @Test
-  public void validate() {
+  void validate() {
   }
 
   @Test
-  public void mark() {
+  void mark() {
   }
 
   @Test
-  public void unmark() {
+  void unmark() {
   }
 
   @Test
-  public void saveSettingValue() {
+  void saveSettingValue() {
   }
 
   @Test
-  public void loadSettingValue() {
+  void loadSettingValue() {
   }
 
   @Test
-  public void addToBreadcrumb() {
+  void addToBreadcrumb() {
   }
 }

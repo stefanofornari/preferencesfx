@@ -1,7 +1,7 @@
 package com.dlsc.preferencesfx.model;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for {@link Group}.
@@ -9,33 +9,33 @@ import org.junit.Test;
  * @author François Martin
  * @author Marco Sanfratello
  */
-public class GroupTest {
+class GroupTest {
 
-  @Before
-  public void setUp() throws Exception {
+  @BeforeEach
+  void setUp() throws Exception {
   }
 
   @Test
-  public void of() {
+  void of() {
   }
 
   @Test
-  public void of1() {
+  void of1() {
   }
 
   @Test
-  public void description() {
+  void description() {
   }
 
   @Test
-  public void mark() {
+  void mark() {
   }
 
   @Test
-  public void unmark() {
+  void unmark() {
   }
 
   @Test
-  public void addToBreadcrumb() {
+  void addToBreadcrumb() {
   }
 }

@@ -59,6 +59,7 @@ public class PreferencesFxModel {
   private boolean oneCategoryLayout;
   private BooleanProperty instantPersistent = new SimpleBooleanProperty(true);
   private BooleanProperty buttonsVisible = new SimpleBooleanProperty(true);
+  private BooleanProperty crumbsVisible = new SimpleBooleanProperty(true);
   private DoubleProperty dividerPosition = new SimpleDoubleProperty(DEFAULT_DIVIDER_POSITION);
 
   private final Map<EventType<PreferencesFxEvent>, List<EventHandler<? super PreferencesFxEvent>>>
@@ -260,6 +261,18 @@ public class PreferencesFxModel {
 
   public void setButtonsVisible(boolean buttonsVisible) {
     this.buttonsVisible.set(buttonsVisible);
+  }
+
+  public boolean getCrumbsVisible() {
+    return crumbsVisible.get();
+  }
+
+  public BooleanProperty crumbsVisibleProperty() {
+    return crumbsVisible;
+  }
+
+  public void setCrumbsVisible(boolean crumbsVisible) {
+    this.crumbsVisible.set(crumbsVisible);
   }
 
   public boolean isInstantPersistent() {

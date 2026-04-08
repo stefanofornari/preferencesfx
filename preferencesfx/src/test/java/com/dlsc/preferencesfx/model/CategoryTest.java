@@ -1,7 +1,7 @@
 package com.dlsc.preferencesfx.model;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for {@link Category}.
@@ -9,49 +9,49 @@ import org.junit.Test;
  * @author François Martin
  * @author Marco Sanfratello
  */
-public class CategoryTest {
+class CategoryTest {
 
-  @Before
-  public void setUp() throws Exception {
+  @BeforeEach
+  void setUp() throws Exception {
   }
 
   @Test
-  public void of() {
+  void of() {
   }
 
   @Test
-  public void of1() {
+  void of1() {
   }
 
   @Test
-  public void of2() {
+  void of2() {
   }
 
   @Test
-  public void subCategories() {
+  void subCategories() {
   }
 
   @Test
-  public void createBreadcrumbs() {
+  void createBreadcrumbs() {
   }
 
   @Test
-  public void unmarkSettings() {
+  void unmarkSettings() {
   }
 
   @Test
-  public void unmarkGroups() {
+  void unmarkGroups() {
   }
 
   @Test
-  public void unmarkAll() {
+  void unmarkAll() {
   }
 
   @Test
-  public void translate() {
+  void translate() {
   }
 
   @Test
-  public void updateGroupDescriptions() {
+  void updateGroupDescriptions() {
   }
 }

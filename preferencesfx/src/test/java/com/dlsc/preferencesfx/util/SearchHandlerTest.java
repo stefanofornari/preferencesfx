@@ -1,12 +1,12 @@
 package com.dlsc.preferencesfx.util;
 
-import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 import com.dlsc.preferencesfx.model.Category;
 import com.dlsc.preferencesfx.model.PreferencesFxModel;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for {@link SearchHandler}.
@@ -14,36 +14,36 @@ import org.junit.Test;
  * @author François Martin
  * @author Marco Sanfratello
  */
-public class SearchHandlerTest {
+class SearchHandlerTest {
 
   SearchHandler searchHandler;
   PreferencesFxModel mockModel;
 
-  @Before
-  public void setUp() {
+  @BeforeEach
+  void setUp() {
     mockModel = mock(PreferencesFxModel.class);
     searchHandler = new SearchHandler();
     // TODO: call init() on searchHandler
   }
 
   @Test
-  public void init() {
+  void init() {
   }
 
   @Test
-  public void initializeSearchText() {
+  void initializeSearchText() {
   }
 
   @Test
-  public void bindFilterPredicate() {
+  void bindFilterPredicate() {
   }
 
   @Test
-  public void updateSearch() {
+  void updateSearch() {
   }
 
   @Test
-  public void compareMatches() {
+  void compareMatches() {
     Category setting = mock(Category.class);
     Category group = mock(Category.class);
     Category category = mock(Category.class);
@@ -53,38 +53,38 @@ public class SearchHandlerTest {
     Object[] expected = {category, category, category, category, category, category, category, category, category, category, category, category, category, category, group, group, group, group, group, group, group, group, group, group, group, group, group, group, group, group, group, group, group, group, null, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting, setting};
     for (int i = 0; i < matches1.length; i++) {
       assertSame(
-          "match1: " + matches1[i] + ", match2: " + matches2[i] + ", match3: " + matches3[i],
           expected[i],
-          searchHandler.compareMatches(setting, group, category, matches1[i], matches2[i], matches3[i])
+          searchHandler.compareMatches(setting, group, category, matches1[i], matches2[i], matches3[i]),
+          "match1: " + matches1[i] + ", match2: " + matches2[i] + ", match3: " + matches3[i]
       );
     }
   }
 
   @Test
-  public void getCategoryMatch() {
+  void getCategoryMatch() {
   }
 
   @Test
-  public void categoryMatchProperty() {
+  void categoryMatchProperty() {
   }
 
   @Test
-  public void init1() {
+  void init1() {
   }
 
   @Test
-  public void initializeSearchText1() {
+  void initializeSearchText1() {
   }
 
   @Test
-  public void bindFilterPredicate1() {
+  void bindFilterPredicate1() {
   }
 
   @Test
-  public void updateSearch1() {
+  void updateSearch1() {
   }
 
   @Test
-  public void compareMatches1() {
+  void compareMatches1() {
   }
 }

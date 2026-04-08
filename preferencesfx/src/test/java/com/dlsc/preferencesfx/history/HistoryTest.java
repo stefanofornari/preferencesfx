@@ -10,8 +10,8 @@ import com.dlsc.preferencesfx.model.Setting;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for {@link History}.
@@ -19,14 +19,14 @@ import org.junit.Test;
  * @author François Martin
  * @author Marco Sanfratello
  */
-public class HistoryTest {
+class HistoryTest {
   History history;
   StringProperty property;
   StringProperty mockProperty;
   Setting mockSetting;
 
-  @Before
-  public void setUp() throws Exception {
+  @BeforeEach
+  void setUp() throws Exception {
     history = new History();
     property = new SimpleStringProperty("");
     mockProperty = mock(SimpleStringProperty.class);
@@ -80,30 +80,30 @@ public class HistoryTest {
   }
 
   @Test
-  public void attachChangeListener1() {
+  void attachChangeListener1() {
   }
 
   @Test
-  public void doWithoutListeners1() {
+  void doWithoutListeners1() {
   }
 
   @Test
-  public void undo1() {
+  void undo1() {
   }
 
   @Test
-  public void undoAll() {
+  void undoAll() {
   }
 
   @Test
-  public void redo1() {
+  void redo1() {
   }
 
   @Test
-  public void redoAll() {
+  void redoAll() {
   }
 
   @Test
-  public void clear() {
+  void clear() {
   }
 }

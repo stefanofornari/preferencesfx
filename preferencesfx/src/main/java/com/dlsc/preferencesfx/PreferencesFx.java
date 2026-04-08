@@ -246,6 +246,11 @@ public class PreferencesFx {
     return this;
   }
 
+  public PreferencesFx crumbsVisibility(boolean isVisible) {
+    preferencesFxModel.setCrumbsVisible(isVisible);
+    return this;
+  }
+
   /**
    * Sets the translation service property of the preferences dialog.
    *

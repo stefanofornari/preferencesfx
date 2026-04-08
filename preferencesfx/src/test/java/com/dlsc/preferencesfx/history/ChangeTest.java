@@ -1,14 +1,13 @@
 package com.dlsc.preferencesfx.history;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import com.dlsc.preferencesfx.model.Setting;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for {@link Change}.
@@ -16,7 +15,7 @@ import org.junit.Test;
  * @author François Martin
  * @author Marco Sanfratello
  */
-public class ChangeTest {
+class ChangeTest {
 
   String s1 = "String 1";
   String s2 = "String 2";
@@ -27,22 +26,22 @@ public class ChangeTest {
   Change c;
   Setting mockSetting = mock(Setting.class);
 
-  @Before
-  public void setUp() throws Exception {
+  @BeforeEach
+  void setUp() throws Exception {
     list1 = FXCollections.observableArrayList();
     list2 = FXCollections.observableArrayList();
   }
 
   @Test
-  public void undo() {
+  void undo() {
   }
 
   @Test
-  public void redo() {
+  void redo() {
   }
 
   @Test
-  public void isRedundantTwoEmptyLists() {
+  void isRedundantTwoEmptyLists() {
     c = new Change(mockSetting, list1, list2);
     assertTrue(c.isRedundant());
 
@@ -52,7 +51,7 @@ public class ChangeTest {
   }
 
   @Test
-  public void isRedundantOneEmptyList() {
+  void isRedundantOneEmptyList() {
     // first list empty
     list1.add(s1);
     c = new Change(mockSetting, list1, list2);
@@ -66,7 +65,7 @@ public class ChangeTest {
   }
 
   @Test
-  public void isRedundantSameObjects() {
+  void isRedundantSameObjects() {
     list1.addAll(s1, s2, s3);
     list2.addAll(s1, s2, s3);
     c = new Change(mockSetting, list1, list2);
@@ -74,7 +73,7 @@ public class ChangeTest {
   }
 
   @Test
-  public void isRedundantSameObjectsDifferentOrder() {
+  void isRedundantSameObjectsDifferentOrder() {
     list1.addAll(s1, s2, s3);
     list2.addAll(s1, s3, s2);
     c = new Change(mockSetting, list1, list2);
@@ -82,7 +81,7 @@ public class ChangeTest {
   }
 
   @Test
-  public void isRedundantDifferentObjects() {
+  void isRedundantDifferentObjects() {
     list1.addAll(s1, s2);
     list2.addAll(s3, s4);
     c = new Change(mockSetting, list1, list2);
@@ -90,7 +89,7 @@ public class ChangeTest {
   }
 
   @Test
-  public void isRedundantSameObjectsDifferentCardinalities() {
+  void isRedundantSameObjectsDifferentCardinalities() {
     list1.addAll(s1, s2, s2);
     list2.addAll(s1, s1, s2);
     c = new Change(mockSetting, list1, list2);
@@ -98,10 +97,10 @@ public class ChangeTest {
   }
 
   @Test
-  public void isListChange() {
+  void isListChange() {
   }
 
   @Test
-  public void getTimestamp() {
+  void getTimestamp() {
   }
 }

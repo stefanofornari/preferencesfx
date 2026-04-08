@@ -1,9 +1,8 @@
 package com.dlsc.preferencesfx.util;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test class for {@link Strings}.
@@ -11,9 +10,9 @@ import org.junit.Test;
  * @author François Martin
  * @author Marco Sanfratello
  */
-public class StringsTest {
+class StringsTest {
   @Test
-  public void testContainsIgnoreCase() {
+  void testContainsIgnoreCase() {
     assertTrue(Strings.containsIgnoreCase("Favorites", ""));
     assertTrue(Strings.containsIgnoreCase("Favorites", "F"));
     assertTrue(Strings.containsIgnoreCase("Favorites", "Fa"));
