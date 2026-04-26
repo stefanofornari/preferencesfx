@@ -5,12 +5,12 @@
     <parent>
         <groupId>com.github.stefanofornari</groupId>
         <artifactId>preferencesfxparent</artifactId>
-        <version>26.0.2-SNAPSHOT</version>
+        <version>26.0.2</version>
     </parent>
 
     <groupId>com.github.stefanofornari</groupId>
     <artifactId>preferencesfx</artifactId>
-    <version>26.0.2-SNAPSHOT</version>
+    <version>26.0.2</version>
     <packaging>jar</packaging>
 
     <name>PreferencesFX Core</name>
@@ -27,7 +27,7 @@
     </licenses>
     <scm>
         <url>https://github.com/dlsc-software-consulting-gmbh/PreferencesFX</url>
-        <tag>HEAD</tag>
+        <tag>preferencesfxparent-26.0.2</tag>
     </scm>
 
     <developers>
