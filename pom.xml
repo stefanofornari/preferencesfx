@@ -95,7 +95,7 @@
             <dependency>
                 <groupId>com.github.stefanofornari</groupId>
                 <artifactId>formsfx</artifactId>
-                <version>26.0.2-SNAPSHOT</version>
+                <version>26.0.2</version>
             </dependency>
 
             <dependency>
