@@ -39,6 +39,7 @@
 
     <modules>
         <module>preferencesfx</module>
+        <module>preferencesfx-demo</module>
     </modules>
 
     <profiles>

@@ -44,6 +44,7 @@ public class BreadCrumbView extends HBox implements View {
     // only add breadCrumbBar if there's more than one category
     if (!model.isOneCategoryLayout()) {
       getChildren().add(breadCrumbBar);
+      breadCrumbBar.visibleProperty().bind(model.crumbsVisibleProperty());
     }
     getChildren().addAll(
         undoRedoBox

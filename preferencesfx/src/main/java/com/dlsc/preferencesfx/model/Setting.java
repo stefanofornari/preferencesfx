@@ -51,9 +51,9 @@ public class Setting<E extends Element, P extends Property> {
       Logger.getLogger(Setting.class.getName());
 
   public static final String MARKED_STYLE_CLASS = "simple-control-marked";
-  private String description;
-  private E element;
-  private P value;
+  private final String description;
+  private final E element;
+  private final P value;
   private boolean marked = false;
   private final EventHandler<MouseEvent> unmarker = event -> unmark();
   private final StringProperty breadcrumb = new SimpleStringProperty("");
@@ -427,7 +427,6 @@ public class Setting<E extends Element, P extends Property> {
    *
    * @param <F>         the field type
    * @param <P>         the property type
-   * @param description the title of this setting
    * @param field       custom Field object from FormsFX
    * @param property    to be bound, saved / loaded and used for undo / redo
    * @return the constructed setting
@@ -448,14 +447,30 @@ public class Setting<E extends Element, P extends Property> {
    *          Only use this for {@link Node}s with static content!
    *
    * @param <N>         the node element type
+   * @param description the title of this setting
+   * @param node        custom node
+   * @return the constructed setting
+   */
+  public static <N extends Node> Setting of(String description, N node) {
+    return new Setting<>(
+        description,
+        NodeElement.of(node),
+        null);
+  }
+
+  /**
+   * Creates a setting of a custom defined node element.
+   * <br>
+   * This allows for custom elements which just consist of a Node, without showing a description.
+   * @apiNote Changed state of the {@link Node} will NOT be saved!
+   *          Only use this for {@link Node}s with static content!
+   *
+   * @param <N>         the node element type
    * @param node        custom node
    * @return the constructed setting
    */
   public static <N extends Node> Setting of(N node) {
-    return new Setting<>(
-        null,
-        NodeElement.of(node),
-        null);
+    return of(null, node);
   }
 
   /**
