@@ -4,7 +4,7 @@
 
     <groupId>com.github.stefanofornari</groupId>
     <artifactId>preferencesfxparent</artifactId>
-    <version>26.0.2</version>
+    <version>26.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>PreferencesFX</name>
@@ -268,7 +268,7 @@
     <scm>
         <connection>scm:git:git@github.com:stefanofornari/preferencesfx.git</connection>
         <url>https://github.com/stefanofornari/preferencesfx</url>
-        <tag>preferencesfxparent-26.0.2</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
