@@ -27,7 +27,7 @@
     </licenses>
     <scm>
         <url>https://github.com/dlsc-software-consulting-gmbh/PreferencesFX</url>
-        <tag>preferencesfx-26.0.2</tag>
+        <tag>preferencesfxparent-26.0.2</tag>
     </scm>
 
     <developers>
