@@ -23,7 +23,6 @@ import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.image.Image;
 import java.util.logging.Logger;
-import java.util.logging.Level;
 
 /**
  * Represents the main PreferencesFX class.
@@ -35,7 +34,7 @@ public class PreferencesFx {
   private static final Logger LOGGER =
       Logger.getLogger(PreferencesFx.class.getName());
 
-  private PreferencesFxModel preferencesFxModel;
+  public final PreferencesFxModel preferencesFxModel;
 
   private NavigationView navigationView;
   private NavigationPresenter navigationPresenter;
@@ -323,7 +322,7 @@ public class PreferencesFx {
     preferencesFxDialog.setDialogIcon(image);
     return this;
   }
-  
+
   /**
    * Return the stylesheets of the PreferenceFxDialog.
    *

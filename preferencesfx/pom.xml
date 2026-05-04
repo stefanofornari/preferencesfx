@@ -155,6 +155,7 @@
                     <reuseForks>true</reuseForks>
                     <!-- TestFX configuration for headless environments -->
                     <argLine>
+                        --add-opens com.dlsc.preferencesfx/com.dlsc.preferencesfx=ALL-UNNAMED
                         --add-opens com.dlsc.preferencesfx/com.dlsc.preferencesfx.view=ALL-UNNAMED
                         --add-opens com.dlsc.preferencesfx/com.dlsc.preferencesfx.model=ALL-UNNAMED
                         --add-opens com.dlsc.preferencesfx/com.dlsc.preferencesfx.util=ALL-UNNAMED,com.google.gson

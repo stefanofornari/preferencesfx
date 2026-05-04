@@ -128,9 +128,13 @@ public class Change<P> {
    */
   public boolean isRedundant() {
     if (isListChange()) {
-      return Objects.equals(oldList.get(),newList.get());
+        return (oldList == null) ?
+            newList == null :
+            Objects.equals(oldList.get(), newList.get());
     }
-    return oldValue.get().equals(newValue.get());
+    return (oldValue == null) ?
+        newValue == null :
+        Objects.equals(oldValue.get(), newValue.get());
   }
 
   /**

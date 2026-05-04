@@ -1,6 +1,11 @@
 # Change Log
 
-# v26.0.2 - 2026-04-27
+## v26.0.3 - 2026-05-04
+- Fixed NPE in Change.isRedundant() when value is null
+- Exposed PreferencesFx.preferencesFxModel to have accees to the
+  model even once created
+
+## v26.0.2 - 2026-04-27
 - Added visibility property to show/hide the breadcrumbs
 - Improved creation of generic Node elements
 
