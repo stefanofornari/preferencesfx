@@ -26,8 +26,9 @@
         </license>
     </licenses>
     <scm>
-        <url>https://github.com/dlsc-software-consulting-gmbh/PreferencesFX</url>
-        <tag>preferencesfx-26.0.2</tag>
+        <connection>scm:git:git@github.com:stefanofornari/preferencesfx.git</connection>
+        <url>https://github.com/stefanofornari/preferencesfx</url>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
@@ -148,13 +149,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>3.5.5</version>
                 <!-- Only Java 9+ -->
                 <configuration>
                     <forkCount>1</forkCount>
                     <reuseForks>true</reuseForks>
                     <!-- TestFX configuration for headless environments -->
                     <argLine>
+                        @{argLine}
                         --add-opens com.dlsc.preferencesfx/com.dlsc.preferencesfx=ALL-UNNAMED
                         --add-opens com.dlsc.preferencesfx/com.dlsc.preferencesfx.view=ALL-UNNAMED
                         --add-opens com.dlsc.preferencesfx/com.dlsc.preferencesfx.model=ALL-UNNAMED
@@ -181,6 +183,26 @@
                         <java.awt.headless>true</java.awt.headless>
                     </systemPropertyVariables>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.14</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
