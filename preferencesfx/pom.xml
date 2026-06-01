@@ -10,7 +10,7 @@
 
     <groupId>com.github.stefanofornari</groupId>
     <artifactId>preferencesfx</artifactId>
-    <version>26.0.5-SNAPSHOT</version>
+    <version>26.0.4</version>
     <packaging>jar</packaging>
 
     <name>PreferencesFX Core</name>
@@ -28,7 +28,7 @@
     <scm>
         <connection>scm:git:git@github.com:stefanofornari/preferencesfx.git</connection>
         <url>https://github.com/stefanofornari/preferencesfx</url>
-        <tag>preferencesfx-26.0.4</tag>
+        <tag>preferencesfxparent-26.0.4-2</tag>
     </scm>
 
     <developers>
