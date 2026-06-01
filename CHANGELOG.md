@@ -1,5 +1,8 @@
 # Change Log
 
+## v26.0.4 - 20260601
+- Bumped formsfx to 26.0.3
+
 ## v26.0.3 - 2026-05-04
 - Fixed NPE in Change.isRedundant() when value is null
 - Exposed PreferencesFx.preferencesFxModel to have accees to the
