@@ -7,13 +7,12 @@ import com.dlsc.preferencesfx.model.Group;
 import com.dlsc.preferencesfx.model.Setting;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.layout.StackPane;
+import ste.commons.javafx.property.IntegerProperty;
 
 public class OneCategoryExample extends StackPane {
 
@@ -21,7 +20,7 @@ public class OneCategoryExample extends StackPane {
 
   // General
   StringProperty welcomeText = new SimpleStringProperty("Hello World");
-  IntegerProperty brightness = new SimpleIntegerProperty(50);
+  IntegerProperty brightness = new IntegerProperty(50);
   BooleanProperty nightMode = new SimpleBooleanProperty(true);
   DoubleProperty scaling = new SimpleDoubleProperty(1);
 

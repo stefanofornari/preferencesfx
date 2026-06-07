@@ -208,6 +208,14 @@
     </build>
 
     <dependencies>
+        <!-- specific dependencies -->
+        <dependency>
+            <groupId>com.github.stefanofornari</groupId>
+            <artifactId>commonsfx</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- common dependencies -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>

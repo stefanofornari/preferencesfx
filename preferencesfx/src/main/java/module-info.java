@@ -18,4 +18,5 @@ module com.dlsc.preferencesfx {
     exports com.dlsc.preferencesfx.model;
     exports com.dlsc.preferencesfx.util;
     exports com.dlsc.preferencesfx.view;
+    requires commonsfx;
 }

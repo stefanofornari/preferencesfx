@@ -18,6 +18,18 @@
         <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.stefanofornari</groupId>
+            <artifactId>preferencesfx</artifactId>
+            <version>26.0.5-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.stefanofornari</groupId>
+            <artifactId>formsfx</artifactId>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -99,13 +111,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.github.stefanofornari</groupId>
-            <artifactId>preferencesfx</artifactId>
-            <version>26.0.3-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
 </project>

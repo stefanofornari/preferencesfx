@@ -8,6 +8,8 @@ import com.dlsc.formsfx.view.util.VisibilityProperty;
 import com.dlsc.preferencesfx.util.PreferencesFxUtils;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.beans.property.BooleanProperty;
+import javafx.css.PseudoClass;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.control.Label;
@@ -100,6 +102,13 @@ public class PreferencesFxGroupRenderer {
         grid.add(c.node(), 1, i + rowAmount, 1, 1);
 
         // Styling
+        c.node().getStyleClass().add("simple-control");
+        Field field = (Field) element;
+        c.node().pseudoClassStateChanged(PseudoClass.getPseudoClass("invalid"), !field.isValid());
+        field.validProperty().addListener((observable, oldValue, newValue) ->
+            c.node().pseudoClassStateChanged(PseudoClass.getPseudoClass("invalid"), !newValue)
+        );
+
         GridPane.setHgrow(c.node(), Priority.SOMETIMES);
         GridPane.setValignment(c.node(), VPos.CENTER);
         GridPane.setValignment(c.fieldLabel(), VPos.CENTER);

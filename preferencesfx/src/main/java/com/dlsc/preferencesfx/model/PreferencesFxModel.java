@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.ObjectProperty;
@@ -27,10 +28,11 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import java.util.logging.Logger;
-import java.util.logging.Level;
 
 /**
  * Represents the model which holds all of the data and logic which is not limited to presenters.
@@ -60,6 +62,8 @@ public class PreferencesFxModel {
   private BooleanProperty instantPersistent = new SimpleBooleanProperty(true);
   private BooleanProperty buttonsVisible = new SimpleBooleanProperty(true);
   private BooleanProperty crumbsVisible = new SimpleBooleanProperty(true);
+  private BooleanProperty valid = new SimpleBooleanProperty(true);
+  private ObservableList<BooleanProperty> formsValidities = FXCollections.observableArrayList();
   private DoubleProperty dividerPosition = new SimpleDoubleProperty(DEFAULT_DIVIDER_POSITION);
 
   private final Map<EventType<PreferencesFxEvent>, List<EventHandler<? super PreferencesFxEvent>>>
@@ -273,6 +277,33 @@ public class PreferencesFxModel {
 
   public void setCrumbsVisible(boolean crumbsVisible) {
     this.crumbsVisible.set(crumbsVisible);
+  }
+
+  public boolean isValid() {
+    return valid.get();
+  }
+
+  public BooleanProperty validProperty() {
+    return valid;
+  }
+
+  /**
+   * Adds a {@link BooleanProperty} of a {@link com.dlsc.formsfx.model.structure.Form} to the
+   * list of validities and rebinds the global {@link #valid} property.
+   *
+   * @param formValidProperty the property to add
+   */
+  public void addFormValidProperty(BooleanProperty formValidProperty) {
+    formsValidities.add(formValidProperty);
+    rebindValidProperty();
+  }
+
+  private void rebindValidProperty() {
+    valid.unbind();
+    valid.bind(Bindings.createBooleanBinding(
+        () -> formsValidities.stream().allMatch(BooleanProperty::get),
+        formsValidities.toArray(new BooleanProperty[0])
+    ));
   }
 
   public boolean isInstantPersistent() {

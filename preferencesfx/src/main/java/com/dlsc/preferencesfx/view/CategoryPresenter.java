@@ -1,5 +1,6 @@
 package com.dlsc.preferencesfx.view;
 
+import com.dlsc.formsfx.model.structure.Element;
 import com.dlsc.formsfx.model.structure.Form;
 import com.dlsc.formsfx.model.util.BindingMode;
 import com.dlsc.preferencesfx.formsfx.view.renderer.PreferencesFxGroup;
@@ -11,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
-import java.util.logging.Level;
 
 /**
  * Contains presenter logic of the {@link CategoryView}.
@@ -58,6 +58,7 @@ public class CategoryPresenter implements Presenter {
   public void initializeViewParts() {
     form = createForm();
     categoryView.initializeFormRenderer(form);
+    model.addFormValidProperty(form.validProperty());
     addI18nListener();
     addInstantPersistenceListener();
   }
@@ -91,33 +92,32 @@ public class CategoryPresenter implements Presenter {
    * @return the created form.
    */
   private Form createForm() {
-    Form form = Form.of();
     // assign groups from this category
-    List<Group> groups = categoryModel.getGroups();
+    List<Group> categoryGroups = categoryModel.getGroups();
     // if there are no groups, initialize them anyways as a list
-    if (groups == null) {
-      groups = new ArrayList<>();
+    if (categoryGroups == null) {
+      categoryGroups = new ArrayList<>();
     }
 
-    // get groups of this form
-    List<com.dlsc.formsfx.model.structure.Group> formGroups = form.getGroups();
+    List<com.dlsc.formsfx.model.structure.Group> formGroups = new ArrayList<>();
 
     // create PreferenceGroups from Groups
-    for (int i = 0; i < groups.size(); i++) {
-      Group group = groups.get(i);
+    for (Group group : categoryGroups) {
+      // fill groups with settings (as FormsFX fields)
+      List<Element> elements = new ArrayList<>();
+      for (Setting setting : group.getSettings()) {
+        elements.add(setting.getElement());
+      }
+
       PreferencesFxGroup preferencesGroup = (PreferencesFxGroup) PreferencesFxGroup
-          .of()
+          .of(elements.toArray(new Element[0]))
           .visibilityProperty(group.getVisibilityProperty())
           .title(group.getDescription());
       group.setPreferencesGroup(preferencesGroup);
       formGroups.add(preferencesGroup);
-
-      // fill groups with settings (as FormsFX fields)
-      for (Setting setting : group.getSettings()) {
-        formGroups.get(i).getElements().add(setting.getElement());
-      }
     }
 
+    Form form = Form.of(formGroups.toArray(new com.dlsc.formsfx.model.structure.Group[0]));
     applyInstantPersistence(model.isInstantPersistent(), form);
 
     return form;

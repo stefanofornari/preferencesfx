@@ -13,12 +13,10 @@ import com.dlsc.preferencesfx.model.Setting;
 import java.util.Arrays;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -26,6 +24,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.StackPane;
+import ste.commons.javafx.property.IntegerProperty;
 
 public class StandardExample extends StackPane {
 
@@ -33,7 +32,7 @@ public class StandardExample extends StackPane {
 
   // General
   StringProperty welcomeText = new SimpleStringProperty("Hello World");
-  IntegerProperty brightness = new SimpleIntegerProperty(50);
+  IntegerProperty brightness = new IntegerProperty(50);
   BooleanProperty nightMode = new SimpleBooleanProperty(true);
 
   // Screen
@@ -50,7 +49,7 @@ public class StandardExample extends StackPane {
   );
   ObjectProperty<String> orientationSelection = new SimpleObjectProperty<>("Vertical");
 
-  IntegerProperty fontSize = new SimpleIntegerProperty(12);
+  IntegerProperty fontSize = new IntegerProperty(12);
   DoubleProperty lineSpacing = new SimpleDoubleProperty(1.5);
 
   // Favorites
@@ -67,7 +66,7 @@ public class StandardExample extends StackPane {
   );
 
   // Custom Controls
-  IntegerProperty customControlProperty = new SimpleIntegerProperty(42);
+  IntegerProperty customControlProperty = new IntegerProperty(42);
   IntegerField customControl = setupCustomControl();
 
   StringProperty somePassword = new SimpleStringProperty("");

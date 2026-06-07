@@ -17,12 +17,10 @@ import java.util.Arrays;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -34,13 +32,15 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 
+import ste.commons.javafx.property.IntegerProperty;
+
 public class ExtendedExample extends StackPane {
 
   public PreferencesFx preferencesFx;
 
   // General
   StringProperty welcomeText = new SimpleStringProperty("Hello World");
-  IntegerProperty brightness = new SimpleIntegerProperty(50);
+  IntegerProperty brightness = new IntegerProperty(50);
   BooleanProperty nightMode = new SimpleBooleanProperty(true);
 
   // Visibility
@@ -62,7 +62,7 @@ public class ExtendedExample extends StackPane {
   );
   ObjectProperty<String> orientationSelection = new SimpleObjectProperty<>("Vertical");
 
-  IntegerProperty fontSize = new SimpleIntegerProperty(12);
+  IntegerProperty fontSize = new IntegerProperty(12);
   DoubleProperty lineSpacing = new SimpleDoubleProperty(1.5);
 
   // Favorites
@@ -79,7 +79,7 @@ public class ExtendedExample extends StackPane {
   );
 
   // Custom Control
-  IntegerProperty customControlProperty = new SimpleIntegerProperty(42);
+  IntegerProperty customControlProperty = new IntegerProperty(42);
   IntegerField customControl = setupCustomControl();
 
   // Enum Control
@@ -224,7 +224,7 @@ public class ExtendedExample extends StackPane {
                         Setting.of("Drag-n-Drop with ALT pressed only",
                             new SimpleBooleanProperty()),
                         Setting.of("Tooltip initial delay (ms)",
-                            new SimpleIntegerProperty(1200), 0, 1200),
+                            new IntegerProperty(1200), 0, 1200),
                         Setting.of("Enable Antialiasing", groupVisible),
                         Setting.of("Allow changing system settings", categoryVisible)
                     ),

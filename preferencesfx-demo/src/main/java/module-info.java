@@ -7,4 +7,5 @@ module com.dlsc.preferencesfx.demo {
 
     opens com.dlsc.preferencesfx.demo;
     opens com.dlsc.preferencesfx.demo.extended;
+    requires commonsfx;
 }
