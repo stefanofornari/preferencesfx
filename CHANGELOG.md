@@ -1,7 +1,7 @@
 # Change Log
 
-## next
-- Bumped formsfx to ...
+## v25.0.5 - 20260607
+- Bumped formsfx to v26.0.4
 - Fixed an issue with showing validity status
 
 ## v26.0.4 - 20260601
